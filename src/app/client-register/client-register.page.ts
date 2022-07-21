@@ -105,6 +105,7 @@ export class ClientRegisterPage implements OnInit {
               }
 
   ngOnInit() {
+    this.hide(1);
     this.signupForm = new FormGroup({
       'paymentMethod': new FormControl('', Validators.required),
       'displayName': new FormControl('', Validators.required),
