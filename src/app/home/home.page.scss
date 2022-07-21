@@ -25,3 +25,20 @@
 #container a {
   text-decoration: none;
 }
+#deliveries_img{
+  height: 160px;
+  width: 190px;
+  align-content: center;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-top: 30%;
+  margin-left: 25%;
+}
+
+#buttons-grid{
+ margin-top: 60px;
+}ion-content{
+
+  --ion-background-color :white;
+  }

@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar style="--background: #6f2da8;color: white;">    <ion-buttons slot="start">
+      <ion-back-button style="color: white;"></ion-back-button>
+    </ion-buttons>
+    <ion-title>verify-email</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  
+  
+  <ion-grid>
+    <ion-row class="ion-align-self-end" >
+      <!-- <h2 style="text-align: center; margin-left: 20px;">verfiy</h2> -->
+      <p style="text-align: center; margin-top: 50px; color:#6f2da8;" >
+        Please check your email and click on the link to verfiy your email address.
+      </p>
+      <ion-button type="submit" style=" --background:#6f2da8; text-align: center ; margin-left: 50px; margin-top: 30px; color: white;" (click)="authService.SendVerificationMail()"  expand="block">
+        Resend Verification 
+      </ion-button>
+      <ion-button type="submit" style=" --background:#6f2da8; text-align: center ; margin-left: 50px; margin-top: 30px; color: white; width: 60%; " [routerLink]="'/client-login'"  expand="block">
+        Login
+      </ion-button>
+    </ion-row>
+  </ion-grid>
+</ion-content>

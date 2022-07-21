@@ -1,20 +1,37 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div>
+    <div style="text-align: center; margin-top: 50px; padding: 0;">
+      <p style="font-size: 14.5px; color:#6f2da8;">Welcome to All-Deliveries where we make package delivery easy and affordable</p>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    </div>
+      <img id="deliveries_img" src="assets/img/6c7081a6541e4096ace3268c9e266ad9.jpg" alt="your image">
+
+      <ion-grid id="buttons-grid">
+          <ion-row class="ion-align-items-center">
+            <ion-col size="12" class="ion-text-center">
+              <p style="font-size: 17px; color:#6f2da8;">Who do you want to be?</p>
+
+              <ion-button style="--background: #6f2da8;">
+                <span [routerLink]="'/client-register'">Client</span><br>
+              </ion-button> <br><br>
+              <ion-button style="--background: #6f2da8;">
+                  <span (click)="sendEmail()" >Send email</span><br>
+                </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
   </div>
+
+  <!-- <form class="contact-form" (submit)="sendEmail()">
+    <label>Name</label>
+    <input type="text" name="user_name">
+    <label>Email</label>
+    <input type="email" name="user_email" [(ngmodel)]="email" value="{{email}}">
+    <label>Message</label>
+    <textarea name="message"></textarea>
+    <input type="submit" value="Send">
+</form> -->
+
+
 </ion-content>

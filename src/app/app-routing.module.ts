@@ -11,6 +11,26 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'client-register',
+    loadChildren: () => import('./client-register/client-register.module').then( m => m.ClientRegisterPageModule)
+  },
+  {
+    path: 'client-login',
+    loadChildren: () => import('./client-login/client-login.module').then( m => m.ClientLoginPageModule)
+  },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule)
+  },
+  {
+    path: 'password-reset',
+    loadChildren: () => import('./password-reset/password-reset.module').then( m => m.PasswordResetPageModule)
+  },
+  {
+    path: 'verify-email',
+    loadChildren: () => import('./verify-email/verify-email.module').then( m => m.VerifyEmailPageModule)
+  },
 ];
 
 @NgModule({
