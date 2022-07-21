@@ -19,7 +19,7 @@
   </ion-item>
   <ion-row>
     <ion-col>
-      <ion-button style="margin-top: 40px;--background: #6f2da8;" type="submit" (click)="logIn(email, password)" expand="block"
+      <ion-button   fill="outline" style="margin-top: 40px; color: #6f2da8;" type="submit" (click)="logIn(email, password)" expand="block"
         >Login</ion-button
       >
     </ion-col>
@@ -28,12 +28,13 @@
   <ion-row>
     <ion-col>
       <ion-button
+      fill="outline"
         type="submit"
-        style="--background: #6f2da8;"
-        (click)="authService.GoogleAuth()"
+        style="color: #6f2da8;"
         expand="block"
+        [routerLink]="['/client-register']"
       >
-        Login with Google
+        Register Account
       </ion-button>
     </ion-col>
   </ion-row>
@@ -41,6 +42,7 @@
   <ion-row>
     <ion-col>
       <a
+      fill="outline"
         expand="block"
         color="warning"
         [routerLink]="['/password-reset']"
@@ -49,4 +51,5 @@
     </a>
     </ion-col>
   </ion-row>
+
 </ion-content>

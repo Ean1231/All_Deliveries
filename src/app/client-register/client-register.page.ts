@@ -55,10 +55,10 @@ export class ClientRegisterPage implements OnInit {
       { type: 'required', message: 'Email is required.' },
       { type: 'pattern', message: 'Enter a valid email.' }
     ],
-    'password': [
-      { type: 'required', message: 'Password is required.' },
-      { type: 'minlength', message: 'Password must be at least 5 characters long.' }
-    ],
+    // 'password': [
+    //   { type: 'required', message: 'Password is required.' },
+    //   { type: 'minlength', message: 'Password must be at least 5 characters long.' }
+    // ],
     'phoneNumber': [
       { type: 'required', message: 'phone is required.' },
       { type: 'minlength', message: 'Password must be at least 10 characters long.' }
@@ -100,7 +100,7 @@ export class ClientRegisterPage implements OnInit {
 
                 this.pass();
 
-                this.password = this.authService.getRandomInt(1000000000000, 1000000000000000, 100000000000000);
+                this.password = this.authService.pw;
                 console.log(this.password, "Register page ")
               }
 
@@ -109,7 +109,7 @@ export class ClientRegisterPage implements OnInit {
       'paymentMethod': new FormControl('', Validators.required),
       'displayName': new FormControl('', Validators.required),
       'email': new FormControl('', [Validators.required, Validators.email]),
-      'password': new FormControl('', Validators.required),
+      // 'password': new FormControl('', Validators.required),
       'phoneNumber': new FormControl('', [Validators.required, Validators.pattern("^((\\+27-?)|0)?[0-9]{10}$")]),
       'lastName': new FormControl('',Validators.required, ),
       'id_Number': new FormControl('', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{13}$")]),
@@ -275,17 +275,20 @@ generatePassword(passwordLength) {
  
 }
 pass(){
-var calculate = this. getRandomInt(1000000000000, 1000000000000000, 100000000000000) ;
-console.log(calculate);
+var calculate = this.authService.pw;
+console.log(calculate, "from Service pageeeeeeee");
+
+// var calculate = this. getRandomInt(1000000000000, 1000000000000000, 100000000000000) ;
+// console.log(calculate);
 }
 
 sendEmail(email, displayName){
 
   var templateParams = {
     to_name: displayName,
-    password: this.generatePassword(12),
-    from_name: "macdonaldbosman@gmail.com",
-    username: email,
+    password: this.authService.pw,
+    from_name: "All Deliveries Team",
+    username: email
 };
  
 emailjs.send('service_kug2w28','template_e23m3rp', templateParams, '1RMchPbECF_t2HLD-')

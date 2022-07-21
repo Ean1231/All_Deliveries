@@ -10,7 +10,7 @@ import { AlertController, PopoverController } from '@ionic/angular';
   styleUrls: ['./client-login.page.scss'],
 })
 export class ClientLoginPage implements OnInit {
-
+displayName;
   constructor(public alertController: AlertController, private popoverController: PopoverController ,public authService: ServiceService, public router: Router) { }
 
   ngOnInit() {
@@ -31,6 +31,10 @@ export class ClientLoginPage implements OnInit {
         
         window.alert(error.message)
       })
+  }
+
+  userinto(){
+this.displayName;
   }
 
   // async settingsPopover(ev: any) {

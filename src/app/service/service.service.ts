@@ -19,7 +19,7 @@ import { updatePhoneNumber } from 'firebase/auth';
 import { AlertController } from '@ionic/angular';
 
 export interface User {
-  // uid: string;
+  uid: any;
   email: string;
   displayName: string;
   photoURL: string;
@@ -54,6 +54,8 @@ export class ServiceService {
   rawRandomNumber;
   randomnumberCeil;
   pw: any = this.pass();
+  displayName: string;
+
 
   constructor(
     private alertController: AlertController,
@@ -100,8 +102,8 @@ export class ServiceService {
                 emailLower: emailLower,
                 email: user.email,
                 phoneNumber: user.phoneNumber,
-                // uid: this.userData.uid,
-                // emailVerified: this.userData.emailVerified,
+                uid: this.userData.uid,
+                emailVerified: this.userData.emailVerified,
                 ID_Number: user.id_Number,
                 reference_Nr: user.ref_Nr,
                 title: user.title,
@@ -149,11 +151,15 @@ export class ServiceService {
       });
     }
 
+
+
     pass(){
     
-      return this.getRandomInt(1000000000000, 1000000000000000, 100000000000000).toString() ;
+      return this.getRandomInt(100000000000000, 100000000000000000, 10000000000000000).toString() ;
     }
   
+  
+
     // SendVerificationMail() {
     //   this.ngFireAuth.authState.currenUser.sendEmailVerification();
     //   return this.ngFireAuth.auth.currentUser.sendEmailVerification()
@@ -175,7 +181,7 @@ export class ServiceService {
           `users/${user.uid}`
         );
         const userData: User = {
-          // uid: user.uid,
+          uid: user.uid,
           email: user.email,
           displayName: user.displayName,
           photoURL: user.photoURL,
@@ -235,7 +241,7 @@ export class ServiceService {
     // Returns true when user's email is verified
     get isEmailVerified(): boolean {
       const user = JSON.parse(localStorage.getItem('user'));
-      return user.emailVerified !== false ? true : false;
+      return this.userData.emailVerified !== false ? true : false;
     }
     // Sign in with Gmail
     GoogleAuth() {
@@ -314,7 +320,7 @@ export class ServiceService {
     }
 
    public getRandomNumberBetween(){
-      this.rawRandomNumber = Math.random() * 100000;
+      this.rawRandomNumber = Math.random() * 10000000000;
       this.randomNumberFloor = Math.floor(this.rawRandomNumber);
       this.randomnumberCeil = Math.ceil(this.randomNumberFloor);
     

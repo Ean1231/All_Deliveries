@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar style="--background: #6f2da8;color: white;">
+  <ion-toolbar [routerLink]="['/home']" style="--background: #6f2da8;color: white;">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -111,7 +111,7 @@
   <ion-list>
     <ion-item  fill="outline" class="ion-no-padding">
       <ion-label  position="floating" style="color: #6f2da8;">Email</ion-label>
-      <ion-input formControlName="email" type="email"  placeholder="Email" ></ion-input>
+      <ion-input formControlName="email" type="email" [(ngModel)]="email"  placeholder="Email" ></ion-input>
     </ion-item>
     <div class="show-error">
       <div *ngIf="signupForm.get('email').hasError('required') && signupForm.get('email').dirty">Please enter email id
@@ -122,14 +122,14 @@
   </ion-list>
 </div>
 
-<div>
+<!-- <div>
   <ion-list>
     <ion-item  fill="outline" class="ion-no-padding">
       <ion-label  position="floating" style="color: #6f2da8;">Password</ion-label>
       <ion-input readonly autocomplete="off" formControlName="password" type="number"  placeholder="Password"  name="password" value="password" [(ngModel)]="password"></ion-input>
     </ion-item>
   </ion-list>
-</div>
+</div> -->
 
 <div>
   <ion-list>
@@ -263,15 +263,26 @@
 </div>
 
 
-
+<ion-button
+  fill="outline"
+    type="submit"
+    style="color: #6f2da8;"
+    (click)="authService.GoogleAuth()"
+    expand="block"
+  >
+   Signup
+  </ion-button>
 
     <div *ngIf="firebaseErrorMessage != ''" class="error-style">
         <span>{{ firebaseErrorMessage }}</span>
     </div>
     <br>
-    <button fill="outline" style="background:#6f2da8; width: 100%; color: white; border-radius: 5px; height: 40px;">Signup</button>
     
   </form>
+  
+
+  <!-- <button  fill="outline" style="background:#6f2da8; width: 100%; color: white; border-radius: 5px; height: 40px;">Signup</button> -->
+
 
   <p class="go-to-login" style="color: #6f2da8;">Already have an account?
      <a style="width: 100%; --background: #6f2da8;" [routerLink]="'/client-login'" >Login</a>

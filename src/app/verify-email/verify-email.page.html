@@ -14,12 +14,20 @@
       <p style="text-align: center; margin-top: 50px; color:#6f2da8;" >
         Please check your email and click on the link to verfiy your email address.
       </p>
-      <ion-button type="submit" style=" --background:#6f2da8; text-align: center ; margin-left: 50px; margin-top: 30px; color: white;" (click)="authService.SendVerificationMail()"  expand="block">
-        Resend Verification 
-      </ion-button>
-      <ion-button type="submit" style=" --background:#6f2da8; text-align: center ; margin-left: 50px; margin-top: 30px; color: white; width: 60%; " [routerLink]="'/client-login'"  expand="block">
-        Login
-      </ion-button>
+
+
+      <div>
+        <ion-button  fill="outline"  type="submit" style=" color:#6f2da8; text-align: center ; margin-left: 50px; margin-top: 30px; " (click)="authService.SendVerificationMail()"  expand="block">
+          Resend Verification 
+        </ion-button>
+        <ion-button  fill="outline"
+         type="submit" style=" text-align: center ; margin-left: 50px; margin-top: 30px; color: #6f2da8; " [routerLink]="'/client-login'"  expand="block">
+          Login
+        </ion-button>
+      </div>
+   
+
+
     </ion-row>
   </ion-grid>
 </ion-content>
