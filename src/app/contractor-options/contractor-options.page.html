@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>contractor-options</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid id="buttons-grid">
+    <ion-row class="ion-align-items-center">
+      <ion-col size="12" class="ion-text-center">
+
+        <ion-button (click)="Login()" expand="block" style="--background: linear-gradient(#7292cf,#2855ae);">
+          <span >Login</span><br>
+        </ion-button> 
+        <ion-button (click)="Register()" expand="block" disabled="false" style="--background: linear-gradient(#7292cf,#2855ae);">
+            <span >Register</span><br>
+          </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

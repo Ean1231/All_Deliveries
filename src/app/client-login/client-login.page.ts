@@ -14,8 +14,10 @@ displayName;
   constructor(public alertController: AlertController, private popoverController: PopoverController ,public authService: ServiceService, public router: Router) { }
 
   ngOnInit() {
+
   }
 
+  
   
   logIn(email, password) {
     this.authService.SignIn(email.value, password.value)
@@ -23,8 +25,8 @@ displayName;
         if(this.authService.isEmailVerified) {
           this.router.navigate(['dashboard']);          
         } else {
-          this.presentAlert("Email not verified, Please check your email");
-          
+          // this.presentAlert("Email not verified, Please check your email");
+          console.log("verify")
           return false;
         }
       }).catch((error) => {

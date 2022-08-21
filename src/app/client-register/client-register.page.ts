@@ -21,7 +21,7 @@ export class ClientRegisterPage implements OnInit {
   phoneNumber: number;
   password: any;
   displayName: any;
-
+privacy: string ;
   ishidden:boolean = false;
   public shown = false;
   hideMe: boolean;
@@ -49,6 +49,7 @@ export class ClientRegisterPage implements OnInit {
   validations_form: FormGroup;
   errorMessage: string = '';
   successMessage: string = '';
+  policy: string = this.authService.policy;
 
   validation_messages = {
     'email': [
@@ -80,6 +81,7 @@ export class ClientRegisterPage implements OnInit {
     
   };
   ref_Nr: any;
+  id_Number: any;
 
   constructor(  
     private ngZone: NgZone,  
@@ -102,18 +104,27 @@ export class ClientRegisterPage implements OnInit {
 
                 this.password = this.authService.pw;
                 console.log(this.password, "Register page ")
+
+                this.id_Number = this.authService.id;
+                console.log(this.id_Number, "DIE IDDDDDDDDDDDDD")
               }
+
+checkBox = [
+  {name: 'privacy', isChecked: false}
+]
 
   ngOnInit() {
     this.hide(1);
     this.signupForm = new FormGroup({
+      'policy': new FormControl('', Validators.required),
+      'privacy': new FormControl('', Validators.required),
       'paymentMethod': new FormControl('', Validators.required),
       'displayName': new FormControl('', Validators.required),
       'email': new FormControl('', [Validators.required, Validators.email]),
       // 'password': new FormControl('', Validators.required),
       'phoneNumber': new FormControl('', [Validators.required, Validators.pattern("^((\\+27-?)|0)?[0-9]{10}$")]),
       'lastName': new FormControl('',Validators.required, ),
-      'id_Number': new FormControl('', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{13}$")]),
+      'id_Number': new FormControl('', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{8}$")]),
       'ref_Nr': new FormControl('', Validators.required),
       'title': new FormControl('', Validators.required),
       'nickName': new FormControl('', Validators.required),
@@ -135,9 +146,11 @@ export class ClientRegisterPage implements OnInit {
   }
 
   
+
+  
   signup(){
-    if (this.signupForm.invalid) 
-    return;
+    // if (this.signupForm.invalid) 
+    // return;
     this.authService.RegisterUser(this.signupForm.value)
     .then((result) => {
       if (result == null)    // null is success, false means there was an error
@@ -146,7 +159,7 @@ export class ClientRegisterPage implements OnInit {
       this.router.navigate(['verify-email']);
 
       setTimeout(()=>{   
-        this.router.navigate(['client-login']);
+        // this.router.navigate(['client-login']);
     }, 10000);
       
       // this.firebaseErrorMessage = result.message;
@@ -161,12 +174,18 @@ export class ClientRegisterPage implements OnInit {
 }
 
 hide(x) {
-if(x == 0) 
-document.getElementById('mycode').style.display='block';
-else
-document.getElementById('mycode').style.display='none';
-return;
+    if(x == 0) 
+    document.getElementById('mycode').style.display='block';
+    else
+    document.getElementById('mycode').style.display='none';
+    return;
 
+}
+
+
+
+_ionChange(event){
+  console.log(event, "CHECKBOX EVENT")
 }
 
 
@@ -218,6 +237,22 @@ getAddress1(latitude1, longitude1) {
 
   return;
   
+  }
+
+  getID(){
+    this.rawRandomNumber = Math.random() * 100000000;
+    this.randomNumberFloor = Math.floor(this.rawRandomNumber);
+    this.randomnumberCeil = Math.ceil(this.rawRandomNumber);
+  
+    console.log(this.rawRandomNumber ,"Raw Random Nr");
+    console.log(this.randomnumberCeil, "Ceil");
+    console.log(this.randomNumberFloor, "Floor");
+    var ID =this.randomNumberFloor + this.randomnumberCeil;
+    console.log(ID, "IDDDDDDDDD")
+  
+    return;
+    
+
   }
 
   getRandomInt(min, max, raw) : number{
@@ -288,7 +323,7 @@ sendEmail(email, displayName){
   var templateParams = {
     to_name: displayName,
     password: this.authService.pw,
-    from_name: "All Deliveries Team",
+    from_name: "All Deliveries Team - User Registration Email",
     username: email
 };
  

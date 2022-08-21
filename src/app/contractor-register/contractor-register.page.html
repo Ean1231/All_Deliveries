@@ -1,0 +1,285 @@
+<ion-header>
+  <ion-toolbar style="--background: gray">
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="arrow-back" style="color: white;"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content class="ion-padding">
+
+  <!-- <ion-grid id="buttons-grid">
+    <ion-row class="ion-align-items-center">
+      <ion-col size="12" class="ion-text-center">
+
+        <ion-button (click)="hideForm(1)"  expand="block" style="--background: #6f2da8;">
+          <span >Login</span><br>
+        </ion-button> 
+        <ion-button (click)="hideForm1(1)" expand="block" disabled="false" style="--background: #6f2da8;">
+            <span >Register</span><br>
+          </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
+
+  <form id="register"  style="margin-top: 10px; --ion-background-color :white; " [formGroup]="signupForm" (ngSubmit)="signup()">
+
+    <div>
+      <ion-list>
+    <ion-item  fill="outline" class="ion-no-padding">
+          <ion-label  position="floating" style="color: #6f2da8;">ID: </ion-label>
+          <ion-input type="number" required formControlName="id_Number"  name="id_Number" value="id_Number" [(ngModel)]="id_Number"></ion-input>
+        </ion-item>
+
+        <div class="show-error">
+          <div *ngIf="signupForm.get('id_Number').hasError('required') && signupForm.get('id_Number').dirty">Please enter
+            ID number
+          </div>
+          <div *ngIf="signupForm.get('id_Number').hasError('pattern') && signupForm.get('id_Number').dirty">
+            Please enter 8 digit ID number</div>
+        </div>
+      </ion-list>
+    </div>
+
+    <div>
+      <ion-list>
+    <ion-item  fill="outline" class="ion-no-padding">
+          <ion-label  position="floating" style="color: #6f2da8;">ID nmber: </ion-label>
+          <ion-input type="number" required formControlName="id"  name="id" value="id" [(ngModel)]="id"></ion-input>
+        </ion-item>
+
+        <div class="show-error">
+          <div *ngIf="signupForm.get('id_Number').hasError('required') && signupForm.get('id_Number').dirty">Please enter
+            ID number
+          </div>
+          <div *ngIf="signupForm.get('id_Number').hasError('pattern') && signupForm.get('id_Number').dirty">
+            Please enter 8 digit ID number</div>
+        </div>
+      </ion-list>
+    </div>
+    
+    
+    <div>
+      <ion-list>
+        <ion-item  fill="outline" class="ion-no-padding">
+                    <ion-label disabled="true"  position="floating" style="color: #6f2da8;">Reference number</ion-label>
+          <ion-input readonly type="text" required formControlName="ref_Nr" [(ngModel)]="ref_Nr" name="ref_Nr" value="ref_NR" ></ion-input>
+        </ion-item> 
+      </ion-list>
+    </div>
+   
+
+<div>
+  <ion-list>
+    <ion-item  fill="outline" class="ion-no-padding">
+      <ion-select style="color: #6f2da8;" formControlName="title" placeholder="title" >
+        <ion-select-option  value="Mr">Mr</ion-select-option>
+        <ion-select-option  value="Mrs">Mrs</ion-select-option>
+        <ion-select-option  value="Miss">Miss</ion-select-option>
+        <ion-select-option  value="Miss">Doc</ion-select-option>
+        <ion-select-option  value="Miss">Prof</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+</div>
+    
+    
+    <div>
+      <ion-list>
+        <ion-item  fill="outline" class="ion-no-padding">
+          <ion-label  position="floating" style="color: #6f2da8;">first Name</ion-label>
+          <ion-input autocomplete="off" formControlName="displayName"  type="text"></ion-input>
+        </ion-item>
+      </ion-list>
+    </div>
+   
+
+    <div>
+      <ion-list>
+        <ion-item  fill="outline" class="ion-no-padding">
+          <ion-label  position="floating" style="color: #6f2da8;">last Name</ion-label>
+          <ion-input autocomplete="off" formControlName="lastName"  type="text"></ion-input>
+        </ion-item>
+      </ion-list>
+    </div>
+  
+  
+    <div>
+      <ion-list>
+        <ion-item  fill="outline" class="ion-no-padding">
+          <ion-label  position="floating" style="color: #6f2da8;">Prefered name</ion-label>
+          <ion-input type="text" required formControlName="nickName" ></ion-input>
+        </ion-item> 
+      </ion-list>
+    </div>
+
+    
+
+    <div>
+      <ion-list>
+        <ion-item  fill="outline" class="ion-no-padding">
+          <ion-label  position="floating" style="color: #6f2da8;">Contractor Address</ion-label>
+          <ion-input type="text" required formControlName="contractor_address" ></ion-input>
+        </ion-item> 
+      </ion-list>
+    </div>
+
+
+
+  
+
+<div>
+  <ion-list>
+    <ion-item  fill="outline" class="ion-no-padding">
+      <ion-label  position="floating" style="color: #6f2da8;">Email</ion-label>
+      <ion-input formControlName="email" type="email" [(ngModel)]="email"  placeholder="Email" ></ion-input>
+    </ion-item>
+    <div class="show-error">
+      <div *ngIf="signupForm.get('email').hasError('required') && signupForm.get('email').dirty">Please enter email id
+      </div>
+      <div *ngIf="signupForm.get('email').hasError('email') && signupForm.get('email').dirty">
+        Please enter valid email id</div>
+    </div>
+  </ion-list>
+</div>
+
+<!-- <div>
+  <ion-list>
+    <ion-item  fill="outline" class="ion-no-padding">
+      <ion-label  position="floating" style="color: #6f2da8;">Password</ion-label>
+      <ion-input readonly autocomplete="off" formControlName="password" type="number"  placeholder="Password"  name="password" value="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+  </ion-list>
+</div> -->
+
+<div>
+  <ion-list>
+    <ion-item  fill="outline" class="ion-no-padding">
+      <ion-label  position="floating" style="color: #6f2da8;">Phone Number</ion-label>
+      <ion-input autocomplete="off" formControlName="phoneNumber" type="tel" ></ion-input>
+    </ion-item>
+    <div class="show-error">
+      <div *ngIf="signupForm.get('phoneNumber').hasError('required') && signupForm.get('phoneNumber').dirty">Please enter
+        mobile number
+      </div>
+      <div *ngIf="signupForm.get('phoneNumber').hasError('pattern') && signupForm.get('phoneNumber').dirty">
+        Please enter 10 digit mobile number</div>
+    </div>
+  </ion-list>
+</div>
+
+ 
+
+<div>
+  <ion-list>
+    <ion-item  fill="outline" class="ion-no-padding">
+      <ion-label  position="floating" style="color: #6f2da8;">Next of kin Name</ion-label>
+      <ion-input type="text" formControlName="next_of_kin_name"  ></ion-input>
+    </ion-item>
+  </ion-list>
+</div>
+
+<div>
+  <ion-list>
+    <ion-item  fill="outline" class="ion-no-padding">
+      <ion-label  position="floating" style="color: #6f2da8;">Next of kin surname</ion-label>
+      <ion-input type="text" formControlName="next_of_kin_surname"  ></ion-input>
+    </ion-item>
+  </ion-list>
+</div>
+
+<div>
+  <ion-list>
+    <ion-item  fill="outline" class="ion-no-padding">
+      <ion-label  position="floating" style="color: #6f2da8;">Next of kin adddress</ion-label>
+      <ion-input type="text" formControlName="next_of_kin_address"  ></ion-input>
+    </ion-item>
+  </ion-list>
+</div>
+
+<div>
+  <ion-list>
+    <ion-item  fill="outline" class="ion-no-padding">
+      <ion-label  position="floating" style="color: #6f2da8;">Next of kin contact</ion-label>
+      <ion-input autocomplete="off" formControlName="next_of_kin_contact" type="tel" ></ion-input>
+    </ion-item>
+    <div class="show-error">
+      <div *ngIf="signupForm.get('phoneNumber').hasError('required') && signupForm.get('phoneNumber').dirty">Please enter
+        mobile number
+      </div>
+      <div *ngIf="signupForm.get('phoneNumber').hasError('pattern') && signupForm.get('phoneNumber').dirty">
+        Please enter 10 digit mobile number</div>
+    </div>
+  </ion-list>
+</div>
+
+
+
+<div>
+  <ion-list>
+    <ion-item  >
+      <ion-label style="color: #6f2da8;">Background check consent </ion-label><br>
+      <ion-select formControlName="background_check" placeholder="Background check" [multiple]="false" >
+        <ion-select-option  value="accept">Accept</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+</div>
+
+
+
+
+<div>
+  <ion-list>
+    <ion-item  >
+      <ion-label style="color: #6f2da8;">Terms and Conditions </ion-label><br>
+      <ion-select formControlName="terms" placeholder="Read T`s and C`s" [multiple]="false" >
+        <ion-select-option  value="accept">Accept</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+</div>
+
+<div>
+  <ion-list>
+    <ion-item  fill="outline" class="ion-no-padding">
+      <ion-label  position="floating" style="color: #6f2da8;">Privacy policy</ion-label>
+      <ion-input readonly autocomplete="off" formControlName="policy" type="text"  placeholder="policy"  name="policy" value="policy" [(ngModel)]="policy"></ion-input>
+    </ion-item>
+  </ion-list>
+</div>
+
+
+<ion-list>
+  <ion-item >
+    <ion-label>I confirm that i have read,<br> consent and agree <br> too All Deliveries User Agreement <br> and privacy policy</ion-label>
+    <ion-checkbox  slot="end" formControlName="privacy" [(ngModel)]="checkBox.isChecked"></ion-checkbox>
+  </ion-item>
+</ion-list>
+
+
+<ion-button
+  
+    type="submit"
+    style="--background: #6f2da8;"
+    expand="block"
+  >
+   Signup
+  </ion-button>
+
+    <div *ngIf="firebaseErrorMessage != ''" class="error-style">
+        <span>{{ firebaseErrorMessage }}</span>
+    </div>
+    <br>
+    
+  </form>
+
+  <!-- <button  fill="outline" style="background:#6f2da8; width: 100%; color: white; border-radius: 5px; height: 40px;">Signup</button> -->
+
+
+  <p class="go-to-login" style="color: #6f2da8;">Already have an account?
+     <a style="width: 100%; --background: #6f2da8;" [routerLink]="'/contractor-login'" >Login</a>
+  </p>
+</ion-content>

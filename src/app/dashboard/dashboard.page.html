@@ -1,24 +1,66 @@
-<ion-header>
-  <ion-toolbar style="--background: #6f2da8; color: white;">
-        <ion-icon slot="end" id="popover-button" name="ellipsis-vertical-outline"></ion-icon>
-    <!-- <ion-button slot="end" id="popover-button">Open Menu</ion-button> -->
-    <!-- <ion-button slot="end" type="submit" (click)="authService.SignOut()" expand="block">Logout</ion-button> -->
-    <ion-title> Home </ion-title>
-  </ion-toolbar>
-</ion-header>
+
+<ion-menu side="start" menuId="first" contentId="main">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Start Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+</ion-menu>
 
 
-<ion-content class="auth-form">
- 
-  <!-- 3 dots popover -->
-  <ion-popover trigger="popover-button" [dismissOnSelect]="true">
+<ion-content>
+  
+
+
+  <div>
+    <ion-menu side="end" type="push" contentId="main">
+    <ion-buttons slot="start" class="menu_btn" style="position: relative;top: 40px; left: 10px;">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+  </ion-menu>
+  </div>
+
+
+        <div class="top">
+           <div class="nameText">
+              <p>Hi <span>{{ (user | async)?.displayName }}</span>  </p>
+               <h6>Welcome to All Deliveries</h6>
+             <small (click)=" capturepackage()">Capture package</small> 
+          </div>
+          <div class="imageTHumbnail">
+              <img src="assets/img/WhatsApp Image 2022-04-11 at 12.30.17 PM (2).jpeg" alt="Profile Image">
+          </div>
+       </div>
+
+<div class="middleBox">
+  <div class="firstDiv">
+<img class="firstImg" src="assets/img/WhatsApp Image 2022-04-11 at 12.30.17 PM (2).jpeg"/>
+<p class="firstP">history</p>
+<h6 class="firstH6"> history</h6>
+  </div>
+
+  <div class="secondDiv">
+<img class="secondImg" src="assets/img/WhatsApp Image 2022-04-11 at 12.30.17 PM (2).jpeg"/>
+<p class="secondP"> Requests</p>
+<h6 class="secondH6">3</h6>
+  </div>
+
+</div>
+
+       <div class="bottomDiv">
+       
+
+       </div>
+
+  <!-- <ion-popover trigger="popover-button" [dismissOnSelect]="true">
     <ng-template>
       <ion-content>
         <ion-list>
           <ion-item (click)="authService.SignOut()" [button]="true" [detail]="false">Logout</ion-item>
-          <!-- <ion-item [button]="true" [detail]="false">Option 2</ion-item>
+        <ion-item [button]="true" [detail]="false">Option 2</ion-item>
           <ion-item [button]="true" id="nested-trigger">More options...</ion-item>
-   -->
+   
           <ion-popover trigger="nested-trigger" [dismissOnSelect]="true" side="end">
             <ng-template>
               <ion-content>
@@ -37,14 +79,13 @@
     <ion-row>
       <ion-col class="ion-align-self-center">
         <div *ngIf="(user | async)"></div>
-          <h3>Hi {{ (user | async)?.displayName }} </h3> <p>{{ (user | async)?.lastName }}</p>
-        <!-- >
+          <h3>Hello User {{ (user | async)?.displayName }} </h3> <p>{{ (user | async)?.lastName }}</p>
         <span class="divider line one-line">or</span>
         <span class="already">Already a user?</span>
         <ion-button [routerLink]="['/login']" expand="block" color="danger"
           >Sign In</ion-button
-        > -->
+        > 
       </ion-col>
     </ion-row>
-  </ion-grid>
+  </ion-grid> -->
 </ion-content>

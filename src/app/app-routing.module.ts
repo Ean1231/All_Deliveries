@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
+
 const routes: Routes = [
   {
     path: 'home',
@@ -31,6 +32,40 @@ const routes: Routes = [
     path: 'verify-email',
     loadChildren: () => import('./verify-email/verify-email.module').then( m => m.VerifyEmailPageModule)
   },
+  {
+    path: 'contractor-register',
+    loadChildren: () => import('./contractor-register/contractor-register.module').then( m => m.ContractorRegisterPageModule)
+  },
+
+  {
+    path: 'cdashboard',
+    loadChildren: () => import('./cdashboard/cdashboard.module').then( m => m.CdashboardPageModule)
+  },
+  {
+    path: 'cverify',
+    loadChildren: () => import('./cverify/cverify.module').then( m => m.CverifyPageModule)
+  },
+  {
+    path: 'contractor-login',
+    loadChildren: () => import('./contractor-login/contractor-login.module').then( m => m.ContractorLoginPageModule)
+  },
+  {
+    path: 'client-options',
+    loadChildren: () => import('./client-options/client-options.module').then( m => m.ClientOptionsPageModule)
+  },
+  {
+    path: 'contractor-options',
+    loadChildren: () => import('./contractor-options/contractor-options.module').then( m => m.ContractorOptionsPageModule)
+  },
+  {
+    path: 'capture-package',
+    loadChildren: () => import('./capture-package/capture-package.module').then( m => m.CapturePackagePageModule)
+  },
+
+
+
+ 
+
 ];
 
 @NgModule({

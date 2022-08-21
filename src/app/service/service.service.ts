@@ -19,7 +19,8 @@ import { updatePhoneNumber } from 'firebase/auth';
 import { AlertController } from '@ionic/angular';
 
 export interface User {
-  uid: any;
+  // uid: any;
+  id: any;
   email: string;
   displayName: string;
   photoURL: string;
@@ -40,7 +41,18 @@ export interface User {
   expiryDate: Date;
   terms: string;
   password: any;
+  pass: any;
+  privacy: any;
+  policy: string
+  contractor_address: any;
+  next_of_kin_name: any;
+  next_of_kin_surname: any;
+  next_of_kin_address: any;
+  next_of_kin_contact: any;
+  background_check: any;
 }
+
+
 
 
 
@@ -54,8 +66,10 @@ export class ServiceService {
   rawRandomNumber;
   randomnumberCeil;
   pw: any = this.pass();
+  passW: any = this.paasW();
+  id: any = this.getID();
   displayName: string;
-
+policy: string = "privacy policy text here!"
 
   constructor(
     private alertController: AlertController,
@@ -87,55 +101,22 @@ export class ServiceService {
     return Math.floor(Math.random() * (max - min + 1)) + min; 
   }
 
+  getRandomInt1(min, max, raw) : number{
+    raw = Math.random() * 10000000;
+    min = Math.ceil(raw);
+    max = Math.floor(min);
+    return Math.floor(Math.random() * (max - min + 1)) + min; 
+  }
+
 
      // Login in with email/password
   
-    // Register user with email/password
-    RegisterUser(user: any) :Promise<any>{
-
-      return this.ngFireAuth.createUserWithEmailAndPassword(user.email, this.pw).then((result)=>{
-        console.log(this.pw, "begin REGIster in Services");
-          let emailLower = user.email.toLowerCase();
-          this.afStore.doc('/users/' + emailLower)
-          .set({
-                displayName: user.displayName,
-                emailLower: emailLower,
-                email: user.email,
-                phoneNumber: user.phoneNumber,
-                uid: this.userData.uid,
-                emailVerified: this.userData.emailVerified,
-                ID_Number: user.id_Number,
-                reference_Nr: user.ref_Nr,
-                title: user.title,
-                lastName:user.lastName,
-                nickName: user.nickName,
-                Default_pickup: user.pick,
-                Default_pickup_drop: user.drop,
-                paymentMethod: user.paymentMethod,
-                cardType: user.cardType,
-                cardName: user.cardName,
-                cardNumber: user.cardNumber,
-                cvv: user.cvv,
-                expiryDate: user.expiryDate,
-                terms: user.terms,
-                password : this.pw ,
-
-          });
-          // result.user.sendEmailVerification();
-          // this.SendVerificationMail();
-          console.log(this.pw," service --End registration");
-          
-      }).catch(error => {
-        console.log('Auth Service: signup error', error);
-        
-        this.presentAlert(error);
-        if (error.code)
-            return {
-               isValid: false, message: error.message 
-              };
-    });
+ 
+     SignContractorIn(mail, pass) {
+      this.passW = pass ;
+      console.log(pass ,"pppoppPWORD");
+      return this.ngFireAuth.signInWithEmailAndPassword(mail, pass);
     }
-
 
     SignIn(email, password) {
       this.pw = password ;
@@ -151,14 +132,31 @@ export class ServiceService {
       });
     }
 
-
+    paasW(){
+    
+      return this.getRandomInt1(1000000000000000000000, 10000000000000000000000000000, 1000000000000000000000000).toString() ;
+    }
 
     pass(){
     
-      return this.getRandomInt(100000000000000, 100000000000000000, 10000000000000000).toString() ;
+      return this.getRandomInt(1000000000000000000000, 10000000000000000000000000000, 1000000000000000000000000).toString() ;
     }
   
+    getID(){
+      this.rawRandomNumber = Math.random() * 100000000;
+      this.randomNumberFloor = Math.floor(this.rawRandomNumber);
+      this.randomnumberCeil = Math.ceil(this.rawRandomNumber);
+    
+      console.log(this.rawRandomNumber ,"Raw Random Nr");
+      console.log(this.randomnumberCeil, "Ceil");
+      console.log(this.randomNumberFloor, "Floor");
+      var id =this.randomNumberFloor + this.randomnumberCeil;
+      console.log(id, "IDDDDDDDDD")
+    
+      return id
+      
   
+    }
 
     // SendVerificationMail() {
     //   this.ngFireAuth.authState.currenUser.sendEmailVerification();
@@ -181,13 +179,13 @@ export class ServiceService {
           `users/${user.uid}`
         );
         const userData: User = {
-          uid: user.uid,
+          // uid: user.uid,
           email: user.email,
           displayName: user.displayName,
           photoURL: user.photoURL,
           emailVerified: user.emailVerified,
           phoneNumber: user.phoneNumber,
-          id_Number: user.id_Number,
+          id_Number: this.id,
           ref_Nr: user.ref_Nr,
           title: user.title,
           lastName:user.lastName,
@@ -201,13 +199,25 @@ export class ServiceService {
           cvv: user.cvv,
           expiryDate: user.expiryDate,
           terms: user.terms,
-          password: this.pw ,
+          pass: this.passW,
+          password: this.pw,
+          privacy: user.privacy,
+          policy: user.policy,
+          contractor_address: user.contractor_address,
+          next_of_kin_name: user.next_of_kin_name,
+          next_of_kin_surname: user.next_of_kin_surname,
+          next_of_kin_address: user.next_of_kin_address,
+          next_of_kin_contact: user.next_of_kin_contact,
+          background_check: user.background_check,
+          id: user.id
         };
         return userRef.set(userData, {
           merge: true,
         });
         
       }
+
+    
       // Sign-out
       SignOut() {
         return this.ngFireAuth.signOut().then(() => {
@@ -235,13 +245,18 @@ export class ServiceService {
     }
     // Returns true when user is loged in
     get isLoggedIn(): boolean {
-      const user = JSON.parse(localStorage.getItem('user'));
-      return user !== null && user.emailVerified !== false ? true : false;
+      const user = this.userData;
+      if(user === null || user === undefined) return false
+      return user.emailVerified;
+      // const user = JSON.parse(localStorage.getItem('user'));
+      // return user !== null && user.emailVerified !== false ? true : false;
+      
     }
     // Returns true when user's email is verified
     get isEmailVerified(): boolean {
       const user = JSON.parse(localStorage.getItem('user'));
       return this.userData.emailVerified !== false ? true : false;
+      
     }
     // Sign in with Gmail
     GoogleAuth() {
@@ -261,6 +276,101 @@ export class ServiceService {
           window.alert(error);
         });
     }
+
+    RegisterContractor(user: any) :Promise<any>{
+
+      return this.ngFireAuth.createUserWithEmailAndPassword(user.email, this.passW).then((result)=>{
+        console.log(this.passW, "begin REGIster in Services");
+          let emailLower = user.email.toLowerCase();
+          this.afStore.doc('/contractor/' + emailLower)
+          .set({
+                displayName: user.displayName,
+                emailLower: emailLower,
+                mail: user.email,
+                phoneNumber: user.phoneNumber,
+                // uid: this.userData.uid,
+                emailVerified: this.userData.emailVerified,
+                ID_Number: this.id,
+                reference_Nr: user.ref_Nr,
+                title: user.title,
+                lastName:user.lastName,
+                nickName: user.nickName,
+                contractor_address: user.contractor_address,
+                next_of_kin_name: user.next_of_kin_name,
+                next_of_kin_surname: user.next_of_kin_surname,
+                next_of_kin_address: user.next_of_kin_address,
+                next_of_kin_contact: user.next_of_kin_contact,
+                background_check: user.background_check,
+                id: user.id,
+                terms: user.terms,
+                pass : this.passW,
+                privacy: user.privacy,
+                policy: user.policy
+
+          });
+          // result.user.sendEmailVerification();
+          // this.SendVerificationMail();
+          console.log(this.passW," service --End registration");
+          
+      }).catch(error => {
+        console.log('Auth Service: signup error', error);
+        
+        this.presentAlert(error);
+        if (error.code)
+            return {
+               isValid: false, message: error.message 
+              };
+    });
+    }
+
+
+       // Register user with email/password
+       RegisterUser(user: any) :Promise<any>{
+
+        return this.ngFireAuth.createUserWithEmailAndPassword(user.email, this.pw).then((result)=>{
+          console.log(this.pw, "begin REGIster in Services");
+            let emailLower = user.email.toLowerCase();
+            this.afStore.doc('/users/' + emailLower)
+            .set({
+                  displayName: user.displayName,
+                  emailLower: emailLower,
+                  email: user.email,
+                  phoneNumber: user.phoneNumber,
+                  // uid: this.userData.uid,
+                  emailVerified: this.userData.emailVerified,
+                  ID_Number: this.id,
+                  reference_Nr: user.ref_Nr,
+                  title: user.title,
+                  lastName:user.lastName,
+                  nickName: user.nickName,
+                  Default_pickup: user.pick,
+                  Default_pickup_drop: user.drop,
+                  paymentMethod: user.paymentMethod,
+                  cardType: user.cardType,
+                  cardName: user.cardName,
+                  cardNumber: user.cardNumber,
+                  cvv: user.cvv,
+                  expiryDate: user.expiryDate,
+                  terms: user.terms,
+                  password : this.pw,
+                  privacy: user.privacy,
+                  policy: user.policy
+  
+            });
+            // result.user.sendEmailVerification();
+            // this.SendVerificationMail();
+            console.log(this.pw," service --End registration");
+            
+        }).catch(error => {
+          console.log('Auth Service: signup error', error);
+          
+          this.presentAlert(error);
+          if (error.code)
+              return {
+                 isValid: false, message: error.message 
+                };
+      });
+      }
   
   
     async presentAlert(message) {

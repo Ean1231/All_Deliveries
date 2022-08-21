@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { ServiceService } from "../service/service.service";
 import { AngularFirestore} from '@angular/fire/compat/firestore';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,7 +16,7 @@ export class DashboardPage implements OnInit {
   userData: any;
   
   user: Observable<any>;
-  constructor( public ngFireAuth: AngularFireAuth, public authService: ServiceService, public firestore: AngularFirestore) { 
+  constructor(public router: Router, public ngFireAuth: AngularFireAuth, public authService: ServiceService, public firestore: AngularFirestore) { 
     this.user = null; 
   
 }
@@ -35,7 +35,10 @@ export class DashboardPage implements OnInit {
     }
 
   
-
+    capturepackage(){
+      this.router.navigateByUrl("/capture-package");
+  
+    }
 
   
 

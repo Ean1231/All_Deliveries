@@ -1,23 +1,43 @@
-<ion-header>
-  <ion-toolbar [routerLink]="['/home']" style="--background: #6f2da8;color: white;">
+<!-- <ion-header>
+  <ion-toolbar [routerLink]="['/home']" style="--background: gray;color: white;">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title >Registration</ion-title>
+    <ion-title style="text-align: center;">Registration form</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+<ion-header>
+  <ion-toolbar style="--background: gray">
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="arrow-back" style="color: white;"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 
-
 <ion-content class="ion-padding">
 
-  <form style="margin-top: 10px; --ion-background-color :white;" [formGroup]="signupForm" (ngSubmit)="signup()">
+  <!-- <ion-grid id="buttons-grid">
+    <ion-row class="ion-align-items-center">
+      <ion-col size="12" class="ion-text-center">
+
+        <ion-button (click)="hideForm(1)"  expand="block" style="--background: #6f2da8;">
+          <span >Login</span><br>
+        </ion-button> 
+        <ion-button (click)="hideForm1(1)" expand="block" disabled="false" style="--background: #6f2da8;">
+            <span >Register</span><br>
+          </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
+
+  <form id="register"  style="margin-top: 10px; --ion-background-color :white; " [formGroup]="signupForm" (ngSubmit)="signup()">
 
     <div>
       <ion-list>
     <ion-item  fill="outline" class="ion-no-padding">
           <ion-label  position="floating" style="color: #6f2da8;">ID number:</ion-label>
-          <ion-input type="number" required formControlName="id_Number"  ></ion-input>
+          <ion-input type="number" required formControlName="id_Number"  name="id_Number" value="id_Number" [(ngModel)]="id_Number"></ion-input>
         </ion-item>
 
         <div class="show-error">
@@ -25,7 +45,7 @@
             ID number
           </div>
           <div *ngIf="signupForm.get('id_Number').hasError('pattern') && signupForm.get('id_Number').dirty">
-            Please enter 13 digit ID number</div>
+            Please enter 8 digit ID number</div>
         </div>
       </ion-list>
     </div>
@@ -253,21 +273,36 @@
 <div>
   <ion-list>
     <ion-item  >
-      <ion-label style="color: #6f2da8;">Terms and Conditions <br> amet consectetur adipisicing elit. Dolorem provident nihil quo repudiandae vel? Quae iste recusandae culpa, laudantium deleniti quos nam debitis corporis ab explicabo placeat ipsa tempora nulla. </ion-label><br>
+      <ion-label style="color: #6f2da8;">Terms and Conditions </ion-label><br>
       <ion-select formControlName="terms" placeholder="Read T`s and C`s" [multiple]="false" >
         <ion-select-option  value="accept">Accept</ion-select-option>
-        <ion-select-option  value="decline">Do not accept</ion-select-option>
       </ion-select>
     </ion-item>
   </ion-list>
 </div>
 
+<div>
+  <ion-list>
+    <ion-item  fill="outline" class="ion-no-padding">
+      <ion-label  position="floating" style="color: #6f2da8;">Privacy policy</ion-label>
+      <ion-input readonly autocomplete="off" formControlName="policy" type="text"  placeholder="policy"  name="policy" value="policy" [(ngModel)]="policy"></ion-input>
+    </ion-item>
+  </ion-list>
+</div>
+
+
+<ion-list>
+  <ion-item >
+    <ion-label>I confirm that i have read,<br> consent and agree <br> too All Deliveries User Agreement <br> and privacy policy</ion-label>
+    <ion-checkbox  slot="end" formControlName="privacy" [(ngModel)]="checkBox.isChecked"></ion-checkbox>
+  </ion-item>
+</ion-list>
+
 
 <ion-button
-  fill="outline"
+  
     type="submit"
-    style="color: #6f2da8;"
-    (click)="authService.GoogleAuth()"
+    style="--background: #6f2da8;"
     expand="block"
   >
    Signup
@@ -279,7 +314,6 @@
     <br>
     
   </form>
-  
 
   <!-- <button  fill="outline" style="background:#6f2da8; width: 100%; color: white; border-radius: 5px; height: 40px;">Signup</button> -->
 
