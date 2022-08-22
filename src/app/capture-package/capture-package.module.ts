@@ -8,12 +8,17 @@ import { CapturePackagePageRoutingModule } from './capture-package-routing.modul
 
 import { CapturePackagePage } from './capture-package.page';
 
+
+
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CapturePackagePageRoutingModule
+    CapturePackagePageRoutingModule,
+    ReactiveFormsModule,
+
   ],
   declarations: [CapturePackagePage]
 })

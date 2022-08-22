@@ -1,53 +1,43 @@
 
-<ion-menu side="start" menuId="first" contentId="main">
-  <ion-header>
-    <ion-toolbar color="primary">
-      <ion-title>Start Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-</ion-menu>
+
 
 
 <ion-content>
-  
-
-
-  <div>
-    <ion-menu side="end" type="push" contentId="main">
-    <ion-buttons slot="start" class="menu_btn" style="position: relative;top: 40px; left: 10px;">
-      <ion-menu-button color="light"></ion-menu-button>
+  <div style="margin-top: -30px; margin-left: 10px;">
+    <ion-buttons style="position: absolute; margin-top:28px ;" slot="start" >
+      <ion-menu-button   style="color: white; " ></ion-menu-button>
     </ion-buttons>
-  </ion-menu>
+  
   </div>
+
+<br>
+ 
 
 
         <div class="top">
            <div class="nameText">
               <p>Hi <span>{{ (user | async)?.displayName }}</span>  </p>
                <h6>Welcome to All Deliveries</h6>
-             <small (click)=" capturepackage()">Capture package</small> 
+             <small (click)=" capturepackage()">Request Delivery</small> 
           </div>
           <div class="imageTHumbnail">
-              <img src="assets/img/WhatsApp Image 2022-04-11 at 12.30.17 PM (2).jpeg" alt="Profile Image">
+              <img src="assets/img/images.jfif" alt="Profile Image">
           </div>
        </div>
 
 <div class="middleBox">
   <div class="firstDiv">
-<img class="firstImg" src="assets/img/WhatsApp Image 2022-04-11 at 12.30.17 PM (2).jpeg"/>
-<p class="firstP">history</p>
-<h6 class="firstH6"> history</h6>
+<img class="firstImg" src="/assets/img/time-travel-icon-11.jpg"/>
+<p class="firstP">History</p>
+<h6 class="firstH6"> History</h6>
   </div>
-
   <div class="secondDiv">
-<img class="secondImg" src="assets/img/WhatsApp Image 2022-04-11 at 12.30.17 PM (2).jpeg"/>
-<p class="secondP"> Requests</p>
+<img class="secondImg" src="/assets/img/click-cursor-request-icon-outline-style-click-cursor-request-icon-outline-click-cursor-request-vector-icon-web-design-isolated-163037385.jpg"/>
+<p class="secondP"> Request</p>
 <h6 class="secondH6">3</h6>
   </div>
-
 </div>
-
        <div class="bottomDiv">
        
 

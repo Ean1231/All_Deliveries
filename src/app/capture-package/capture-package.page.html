@@ -1,9 +1,315 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>capture-Package</ion-title>
-  </ion-toolbar>
-</ion-header>
+
 
 <ion-content>
+  
+  
+<div class="greeting" style="border-bottom-left-radius: 20px; border-bottom-right-radius: 20px"> 
+  <p style="color: white; font-size: 20px;">Hello <span style="font-weight: bold; ">{{ (user | async)?.displayName }}</span></p>
+</div>
 
+  <form id="register"  style="margin-top: -35px; --ion-background-color :white; padding: 15px; border-radius: 15px; border-top: 1px solid #2855ae; " [formGroup]="signupForm" (ngSubmit)="signup()">
+
+
+    <div >
+      <ion-list>
+    <ion-item  fill="outline" class="ion-no-padding">
+          <ion-label  position="stacked" style="color: #7292cf;">ID number:</ion-label>
+          <ion-input type="number" required formControlName="id_Number"  name="id_Number" value="id_Number" [(ngModel)]="id_Number"></ion-input>
+        </ion-item>
+
+        <div class="show-error">
+          <div *ngIf="signupForm.get('id_Number').hasError('required') && signupForm.get('id_Number').dirty">Please enter
+            ID number
+          </div>
+          <div *ngIf="signupForm.get('id_Number').hasError('pattern') && signupForm.get('id_Number').dirty">
+            Please enter 8 digit ID number</div>
+        </div>
+      </ion-list>
+    </div>
+ 
+
+
+    
+    
+    <div>
+      <ion-list>
+        <ion-item  fill="outline" class="ion-no-padding">
+                    <ion-label disabled="true"  position="stacked" style="color: #7292cf;">Reference number</ion-label>
+          <ion-input readonly type="text" required formControlName="ref_Nr" [(ngModel)]="ref_Nr" name="ref_Nr" value="ref_NR" ></ion-input>
+        </ion-item> 
+      </ion-list>
+    </div>
+
+      
+    <div>
+      <ion-list>
+        <ion-item  fill="outline" class="ion-no-padding">
+          <ion-label  position="stacked" style="color: #7292cf;">Delivery Identity Number</ion-label>
+          <ion-input autocomplete="off" formControlName="DeliveryID"  type="Number"></ion-input>
+        </ion-item>
+      </ion-list>
+    </div>
+
+       
+    
+    <div>
+      <ion-list>
+        <ion-item  fill="outline" class="ion-no-padding">
+                    <ion-label disabled="true"  position="stacked" style="color: #7292cf;">Delivery Reference number</ion-label>
+          <ion-input readonly type="text" required formControlName="DeliveryRefNo" [(ngModel)]="DeliveryRefNo" name="DeliveryRefNo" value="DeliveryRefNo" ></ion-input>
+        </ion-item> 
+      </ion-list>
+    </div>
+   
+    <div>
+      <ion-list>
+        <ion-item  fill="outline" class="ion-no-padding">
+          <ion-label  position="stacked" style="color: #7292cf;">Delivery Description</ion-label>
+          <ion-input autocomplete="off" formControlName="DeliveryDescription"  type="text"></ion-input>
+        </ion-item>
+      </ion-list>
+    </div>
+    
+    <div>
+      <ion-list>
+        <ion-item  fill="outline" class="ion-no-padding">
+          <ion-select style="color: #7292cf;" formControlName="ClientTitle" placeholder="Client Title" >
+            <ion-select-option  value="Mr">Mr</ion-select-option>
+            <ion-select-option  value="Mrs">Mrs</ion-select-option>
+            <ion-select-option  value="Miss">Miss</ion-select-option>
+            <ion-select-option  value="Miss">Doc</ion-select-option>
+            <ion-select-option  value="Miss">Prof</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+    </div>
+    
+    <div>
+      <ion-list>
+        <ion-item  fill="outline" class="ion-no-padding">
+          <ion-label  position="stacked" style="color: #7292cf;">Client Name</ion-label>
+          <ion-input autocomplete="off" formControlName="ClientName"  type="text"></ion-input>
+        </ion-item>
+      </ion-list>
+    </div>
+   
+
+    <div>
+      <ion-list>
+        <ion-item  fill="outline" class="ion-no-padding">
+          <ion-label  position="stacked" style="color: #7292cf;">Client Surname</ion-label>
+          <ion-input autocomplete="off" formControlName="ClientSurname"  type="text"></ion-input>
+        </ion-item>
+      </ion-list>
+    </div>
+  
+  
+    <div>
+      <ion-list>
+        <ion-item  fill="outline" class="ion-no-padding">
+          <ion-label  position="stacked" style="color: #7292cf;">Preferred Name</ion-label>
+          <ion-input type="text" required formControlName="PreferredName" ></ion-input>
+        </ion-item> 
+      </ion-list>
+    </div>
+
+ 
+<div>
+  <ion-list>
+    <ion-item  fill="outline" class="ion-no-padding">
+      <ion-label  position="stacked" style="color: #7292cf;">Email Address</ion-label>
+      <ion-input formControlName="EmailAddress" type="email" [(ngModel)]="EmailAddress"  placeholder="EmailAddress" ></ion-input>
+    </ion-item>
+    <div class="show-error">
+      <div *ngIf="signupForm.get('EmailAddress').hasError('required') && signupForm.get('EmailAddress').dirty">Please enter email id
+      </div>
+      <div *ngIf="signupForm.get('EmailAddress').hasError('EmailAddress') && signupForm.get('EmailAddress').dirty">
+        Please enter valid email id</div>
+    </div>
+  </ion-list>
+</div>
+
+<div>
+  <ion-list>
+    <ion-item  fill="outline" class="ion-no-padding">
+      <ion-label  position="stacked" style="color: #7292cf;">Cellphone Number</ion-label>
+      <ion-input autocomplete="off" formControlName="CellphoneNo" type="tel" ></ion-input>
+    </ion-item>
+    <div class="show-error">
+      <div *ngIf="signupForm.get('CellphoneNo').hasError('required') && signupForm.get('CellphoneNo').dirty">Please enter
+        mobile number
+      </div>
+      <div *ngIf="signupForm.get('CellphoneNo').hasError('pattern') && signupForm.get('CellphoneNo').dirty">
+        Please enter 10 digit mobile number</div>
+    </div>
+  </ion-list>
+</div> 
+
+    <div>
+      <ion-list>
+        <ion-item  fill="outline" class="ion-no-padding">
+          <ion-label  position="stacked" style="color: #7292cf;">Package Type</ion-label>
+          <ion-input type="text" required formControlName="PackageType" ></ion-input>
+        </ion-item> 
+      </ion-list>
+    </div>
+
+    <div>
+      <ion-list>
+        <ion-item  fill="outline" class="ion-no-padding">
+          <ion-label  position="stacked" style="color: #7292cf;">Package Description</ion-label>
+          <ion-input type="text" required formControlName="PackageDescription" ></ion-input>
+        </ion-item> 
+      </ion-list>
+    </div>
+
+    <div>
+      <ion-list>
+        <ion-item  fill="outline" class="ion-no-padding">
+          <ion-label  position="stacked" style="color: #7292cf;">Package Height</ion-label>
+          <ion-input type="number" required formControlName="PackageHeight" ></ion-input>
+        </ion-item> 
+      </ion-list>
+    </div>
+
+    <div>
+      <ion-list>
+        <ion-item  fill="outline" class="ion-no-padding">
+          <ion-label  position="stacked" style="color: #7292cf;">Package Width</ion-label>
+          <ion-input type="number" required formControlName="PackageWidth" ></ion-input>
+        </ion-item> 
+      </ion-list>
+    </div>
+
+<!-- <div>
+  <ion-list>
+    <ion-item  fill="outline" class="ion-no-padding">
+      <ion-label  position="stacked" style="color: #7292cf;">Password</ion-label>
+      <ion-input readonly autocomplete="off" formControlName="password" type="number"  placeholder="Password"  name="password" value="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+  </ion-list>
+</div> -->
+
+
+
+<!-- <div>
+  <ion-list>
+    <ion-item  fill="outline" class="ion-no-padding">
+      <ion-select formControlName="sh" placeholder="payment method" >
+        <ion-select-option (click)="hide(0)" value="visa" name="card" value="card">card</ion-select-option >
+        <ion-select-option (click)="hide(1)" checked value="masterCard"  name="card" value="cash" >cash</ion-select-option >
+      </ion-select>
+    </ion-item>
+  </ion-list>
+</div> -->
+
+ 
+
+<div id="mycode">
+
+<div>
+  <ion-list>
+    <ion-item  fill="outline" class="ion-no-padding">
+      <ion-select formControlName="cardType" placeholder="Credit Card type" >
+        <ion-select-option value="visa">VISA</ion-select-option >
+        <ion-select-option  value="masterCard">Master Card</ion-select-option >
+      </ion-select>
+    </ion-item>
+  </ion-list>
+</div>
+
+<div>
+  <ion-list>
+    <ion-item  fill="outline" class="ion-no-padding">
+      <ion-label  position="stacked" style="color: #7292cf;">Credit Card Name</ion-label>
+      <ion-input type="text" formControlName="cardName"  ></ion-input>
+    </ion-item>
+  </ion-list>
+</div>
+
+
+<div>
+  <ion-list>
+    <ion-item  fill="outline" class="ion-no-padding">
+      <ion-label  position="stacked" style="color: #7292cf;">Credit Card number</ion-label>
+      <ion-input type="number" formControlName="cardNumber"  ></ion-input>
+    </ion-item>
+
+    <div class="show-error">
+      <div *ngIf="signupForm.get('cardNumber').hasError('required') && signupForm.get('cardNumber').dirty">Please enter
+        Card number
+      </div>
+      <div *ngIf="signupForm.get('cardNumber').hasError('pattern') && signupForm.get('cardNumber').dirty">
+        Please enter 10 digit card number</div>
+    </div>
+  </ion-list>
+</div>
+
+
+<div>
+  <ion-list>
+    <ion-item  fill="outline" class="ion-no-padding">
+    <ion-label  position="stacked" style="color: #7292cf;">CVV number</ion-label>
+    <ion-input min="0" max="3" type="number"   formControlName="cvv"  ></ion-input>
+  </ion-item>
+  <div class="show-error">
+    <div *ngIf="signupForm.get('cvv').hasError('required') && signupForm.get('cvv').dirty">Please enter
+      CVV number
+    </div>
+    <div *ngIf="signupForm.get('cvv').hasError('pattern') && signupForm.get('cvv').dirty">
+      Please enter 3 digit CVV number</div>
+  </div>
+  </ion-list>
+</div>
+
+
+<div>
+  <ion-list>
+    <ion-item  fill="outline" class="ion-no-padding">
+      <ion-label  position="stacked" style="color: #7292cf;">Expiry date</ion-label>
+      <ion-input type="date" placeholder="Expiry date" formControlName="expiryDate"></ion-input>
+    </ion-item>
+  </ion-list>
+</div>
+
+</div>
+
+<div>
+  <ion-list>
+    <ion-item  >
+      <ion-label style="color: #7292cf;">Terms and Conditions </ion-label><br>
+      <ion-select formControlName="terms" placeholder="Read T`s and C`s" [multiple]="false" >
+        <ion-select-option  value="accept">Accept</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+</div>
+
+<div>
+  <ion-list>
+    <ion-item  fill="outline" class="ion-no-padding">
+      <ion-label  position="stacked" style="color: #7292cf;">Privacy policy</ion-label>
+      <ion-input readonly autocomplete="off" formControlName="policy" type="text"  placeholder="policy"  name="policy" value="policy" [(ngModel)]="policy"></ion-input>
+    </ion-item>
+  </ion-list>
+</div>
+
+
+
+
+<ion-button
+  
+    type="submit"
+    style="--background: #7292cf;"
+    expand="block"
+  >
+   Signup
+  </ion-button>
+
+    <div *ngIf="firebaseErrorMessage != ''" class="error-style">
+        <span>{{ firebaseErrorMessage }}</span>
+    </div>
+    <br>
+    
+  </form>
 </ion-content>

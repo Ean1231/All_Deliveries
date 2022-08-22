@@ -1,5 +1,5 @@
 <!-- <ion-header>
-  <ion-toolbar [routerLink]="['/home']" style="--background: gray;color: white;">
+  <ion-toolbar [routerLink]="['/home']" style="--background: #7292cf;color: white;">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header> -->
 <ion-header>
-  <ion-toolbar style="--background: gray">
+  <ion-toolbar style="--background: #7292cf">
     <ion-buttons slot="start">
       <ion-back-button text="" icon="arrow-back" style="color: white;"></ion-back-button>
     </ion-buttons>
@@ -21,10 +21,10 @@
     <ion-row class="ion-align-items-center">
       <ion-col size="12" class="ion-text-center">
 
-        <ion-button (click)="hideForm(1)"  expand="block" style="--background: #6f2da8;">
+        <ion-button (click)="hideForm(1)"  expand="block" style="--background: #7292cf;">
           <span >Login</span><br>
         </ion-button> 
-        <ion-button (click)="hideForm1(1)" expand="block" disabled="false" style="--background: #6f2da8;">
+        <ion-button (click)="hideForm1(1)" expand="block" disabled="false" style="--background: #7292cf;">
             <span >Register</span><br>
           </ion-button>
       </ion-col>
@@ -36,7 +36,7 @@
     <div>
       <ion-list>
     <ion-item  fill="outline" class="ion-no-padding">
-          <ion-label  position="floating" style="color: #6f2da8;">ID number:</ion-label>
+          <ion-label  position="floating" style="color: #7292cf;">ID number:</ion-label>
           <ion-input type="number" required formControlName="id_Number"  name="id_Number" value="id_Number" [(ngModel)]="id_Number"></ion-input>
         </ion-item>
 
@@ -54,7 +54,7 @@
     <div>
       <ion-list>
         <ion-item  fill="outline" class="ion-no-padding">
-                    <ion-label disabled="true"  position="floating" style="color: #6f2da8;">Reference number</ion-label>
+                    <ion-label disabled="true"  position="floating" style="color: #7292cf;">Reference number</ion-label>
           <ion-input readonly type="text" required formControlName="ref_Nr" [(ngModel)]="ref_Nr" name="ref_Nr" value="ref_NR" ></ion-input>
         </ion-item> 
       </ion-list>
@@ -64,7 +64,7 @@
 <div>
   <ion-list>
     <ion-item  fill="outline" class="ion-no-padding">
-      <ion-select style="color: #6f2da8;" formControlName="title" placeholder="title" >
+      <ion-select style="color: #7292cf;" formControlName="title" placeholder="title" >
         <ion-select-option  value="Mr">Mr</ion-select-option>
         <ion-select-option  value="Mrs">Mrs</ion-select-option>
         <ion-select-option  value="Miss">Miss</ion-select-option>
@@ -79,7 +79,7 @@
     <div>
       <ion-list>
         <ion-item  fill="outline" class="ion-no-padding">
-          <ion-label  position="floating" style="color: #6f2da8;">first Name</ion-label>
+          <ion-label  position="floating" style="color: #7292cf;">first Name</ion-label>
           <ion-input autocomplete="off" formControlName="displayName"  type="text"></ion-input>
         </ion-item>
       </ion-list>
@@ -89,7 +89,7 @@
     <div>
       <ion-list>
         <ion-item  fill="outline" class="ion-no-padding">
-          <ion-label  position="floating" style="color: #6f2da8;">last Name</ion-label>
+          <ion-label  position="floating" style="color: #7292cf;">last Name</ion-label>
           <ion-input autocomplete="off" formControlName="lastName"  type="text"></ion-input>
         </ion-item>
       </ion-list>
@@ -99,7 +99,7 @@
     <div>
       <ion-list>
         <ion-item  fill="outline" class="ion-no-padding">
-          <ion-label  position="floating" style="color: #6f2da8;">Prefered name</ion-label>
+          <ion-label  position="floating" style="color: #7292cf;">Prefered name</ion-label>
           <ion-input type="text" required formControlName="nickName" ></ion-input>
         </ion-item> 
       </ion-list>
@@ -110,7 +110,7 @@
     <div>
       <ion-list>
         <ion-item  fill="outline" class="ion-no-padding">
-          <ion-label  position="floating" style="color: #6f2da8;">Default Pickup</ion-label>
+          <ion-label  position="floating" style="color: #7292cf;">Default Pickup</ion-label>
           <ion-input type="text" required formControlName="pick" ></ion-input>
         </ion-item> 
       </ion-list>
@@ -119,7 +119,7 @@
     <div>
       <ion-list>
         <ion-item  fill="outline" class="ion-no-padding">
-          <ion-label  position="floating" style="color: #6f2da8;">Default dropoff</ion-label>
+          <ion-label  position="floating" style="color: #7292cf;">Default dropoff</ion-label>
           <ion-input type="text" required formControlName="drop" ></ion-input>
         </ion-item> 
       </ion-list>
@@ -130,7 +130,7 @@
 <div>
   <ion-list>
     <ion-item  fill="outline" class="ion-no-padding">
-      <ion-label  position="floating" style="color: #6f2da8;">Email</ion-label>
+      <ion-label  position="floating" style="color: #7292cf;">Email</ion-label>
       <ion-input formControlName="email" type="email" [(ngModel)]="email"  placeholder="Email" ></ion-input>
     </ion-item>
     <div class="show-error">
@@ -145,7 +145,7 @@
 <!-- <div>
   <ion-list>
     <ion-item  fill="outline" class="ion-no-padding">
-      <ion-label  position="floating" style="color: #6f2da8;">Password</ion-label>
+      <ion-label  position="floating" style="color: #7292cf;">Password</ion-label>
       <ion-input readonly autocomplete="off" formControlName="password" type="number"  placeholder="Password"  name="password" value="password" [(ngModel)]="password"></ion-input>
     </ion-item>
   </ion-list>
@@ -154,7 +154,7 @@
 <div>
   <ion-list>
     <ion-item  fill="outline" class="ion-no-padding">
-      <ion-label  position="floating" style="color: #6f2da8;">Phone Number</ion-label>
+      <ion-label  position="floating" style="color: #7292cf;">Phone Number</ion-label>
       <ion-input autocomplete="off" formControlName="phoneNumber" type="tel" ></ion-input>
     </ion-item>
     <div class="show-error">
@@ -217,7 +217,7 @@
 <div>
   <ion-list>
     <ion-item  fill="outline" class="ion-no-padding">
-      <ion-label  position="floating" style="color: #6f2da8;">Credit Card Name</ion-label>
+      <ion-label  position="floating" style="color: #7292cf;">Credit Card Name</ion-label>
       <ion-input type="text" formControlName="cardName"  ></ion-input>
     </ion-item>
   </ion-list>
@@ -227,7 +227,7 @@
 <div>
   <ion-list>
     <ion-item  fill="outline" class="ion-no-padding">
-      <ion-label  position="floating" style="color: #6f2da8;">Credit Card number</ion-label>
+      <ion-label  position="floating" style="color: #7292cf;">Credit Card number</ion-label>
       <ion-input type="number" formControlName="cardNumber"  ></ion-input>
     </ion-item>
 
@@ -245,7 +245,7 @@
 <div>
   <ion-list>
     <ion-item  fill="outline" class="ion-no-padding">
-    <ion-label  position="floating" style="color: #6f2da8;">CVV number</ion-label>
+    <ion-label  position="floating" style="color: #7292cf;">CVV number</ion-label>
     <ion-input min="0" max="3" type="number"   formControlName="cvv"  ></ion-input>
   </ion-item>
   <div class="show-error">
@@ -262,7 +262,7 @@
 <div>
   <ion-list>
     <ion-item  fill="outline" class="ion-no-padding">
-      <ion-label  position="floating" style="color: #6f2da8;">Expiry date</ion-label>
+      <ion-label  position="floating" style="color: #7292cf;">Expiry date</ion-label>
       <ion-input type="date" placeholder="Expiry date" formControlName="expiryDate"></ion-input>
     </ion-item>
   </ion-list>
@@ -273,7 +273,7 @@
 <div>
   <ion-list>
     <ion-item  >
-      <ion-label style="color: #6f2da8;">Terms and Conditions </ion-label><br>
+      <ion-label style="color: #7292cf;">Terms and Conditions </ion-label><br>
       <ion-select formControlName="terms" placeholder="Read T`s and C`s" [multiple]="false" >
         <ion-select-option  value="accept">Accept</ion-select-option>
       </ion-select>
@@ -284,7 +284,7 @@
 <div>
   <ion-list>
     <ion-item  fill="outline" class="ion-no-padding">
-      <ion-label  position="floating" style="color: #6f2da8;">Privacy policy</ion-label>
+      <ion-label  position="floating" style="color: #7292cf;">Privacy policy</ion-label>
       <ion-input readonly autocomplete="off" formControlName="policy" type="text"  placeholder="policy"  name="policy" value="policy" [(ngModel)]="policy"></ion-input>
     </ion-item>
   </ion-list>
@@ -302,7 +302,7 @@
 <ion-button
   
     type="submit"
-    style="--background: #6f2da8;"
+    style="--background: #7292cf;"
     expand="block"
   >
    Signup
@@ -315,10 +315,10 @@
     
   </form>
 
-  <!-- <button  fill="outline" style="background:#6f2da8; width: 100%; color: white; border-radius: 5px; height: 40px;">Signup</button> -->
+  <!-- <button  fill="outline" style="background:#7292cf; width: 100%; color: white; border-radius: 5px; height: 40px;">Signup</button> -->
 
 
-  <p class="go-to-login" style="color: #6f2da8;">Already have an account?
-     <a style="width: 100%; --background: #6f2da8;" [routerLink]="'/client-login'" >Login</a>
+  <p class="go-to-login" style="color: #7292cf;">Already have an account?
+     <a style="width: 100%; --background: #7292cf;" [routerLink]="'/client-login'" >Login</a>
   </p>
 </ion-content>

@@ -19,16 +19,19 @@ import { provideStorage, getStorage } from '@angular/fire/storage';
 
 
 import {initializeApp, provideFirebaseApp} from '@angular/fire/app';
+import { CommonModule } from '@angular/common';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatStepperModule } from '@angular/material/stepper';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MatIconModule } from '@angular/material/icon';
 import { environment } from '../environments/environment';
+import { MatMenuModule } from '@angular/material/menu';
 
 import {MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSliderModule } from '@angular/material/slider';
+
 
 //service_kug2w28
 
@@ -39,6 +42,7 @@ import { MatSliderModule } from '@angular/material/slider';
   imports: [BrowserModule, 
     IonicModule.forRoot(),
      AppRoutingModule, 
+     CommonModule,
      AngularFireModule.initializeApp(environment.firebaseConfig),
      provideFirebaseApp( () => initializeApp(environment.firebaseConfig)),
     AngularFireAuthModule,
@@ -47,6 +51,7 @@ import { MatSliderModule } from '@angular/material/slider';
     MatIconModule,
     MatFormFieldModule,
     MatSliderModule,
+    MatMenuModule,
     BrowserAnimationsModule,
     MatStepperModule,
     AngularFirestoreModule,
